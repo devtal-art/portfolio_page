@@ -140,19 +140,25 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Popup
 
- // Enable single-select tag groups
-  document.querySelectorAll('.tag').forEach(tag => {
+// Enable single-select tag groups
+document.querySelectorAll('.tag').forEach(tag => {
     tag.addEventListener('click', () => {
-      const group = tag.dataset.group;
-      document.querySelectorAll(`.tag[data-group="${group}"]`).forEach(el => el.classList.remove('selected'));
-      tag.classList.add('selected');
+        const group = tag.dataset.group;
+        document.querySelectorAll(`.tag[data-group="${group}"]`).forEach(el => el.classList.remove('selected'));
+        tag.classList.add('selected');
     });
-  });
+});
 
-  function openPopup() {
+function openPopup() {
     document.getElementById("popupForm").classList.add("show");
-  }
+}
 
-  function closePopup() {
+function closePopup() {
     document.getElementById("popupForm").classList.remove("show");
-  }
+}
+
+
+import gsap from 'gsap';
+import ScrollSmoother from 'gsap/ScrollSmoother';
+
+gsap.registerPlugin(ScrollSmoother);
