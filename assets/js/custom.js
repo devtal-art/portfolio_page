@@ -156,5 +156,3 @@ function openPopup() {
 function closePopup() {
     document.getElementById("popupForm").classList.remove("show");
 }
-
-
