@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The ArtLogic</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+
+<body>
+
+    <div class="contact-button">
+        <a href="#" class="open-btn" onclick="openPopup()" aria-label="Contact us">
+            <div class="pre_img">
+                <img src="assets/images/contact_img.jpg" alt="Profile" />
+                <span class="hover_svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="tabler-icon tabler-icon-mail text-[#C43670]">
+                        <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z">
+                        </path>
+                        <path d="M3 7l9 6l9 -6"></path>
+                    </svg>
+                </span>
+            </div>
+            <div class="sec_text">
+                <span class="pre">Contact</span>
+                <span class="pre">Contact</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popupForm">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h1>Get in <span>touch</span></h1>
+                <button class="close-btn" onclick="closePopup()">×</button>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-section">
+                    <label>Full name</label>
+                    <input type="text" placeholder="Fiona Wong" />
+                </div>
+                <div class="form-section">
+                    <label>Email</label>
+                    <input type="email" placeholder="fionawong@gmail.com" />
+                </div>
+                <div class="form-section">
+                    <label>Company</label>
+                    <input type="text" placeholder="Fifi Vintage" />
+                </div>
+                <div class="form-section">
+                    <label>Project details</label>
+                    <textarea placeholder="Tell me your goals"></textarea>
+                </div>
+                <!-- What can I do for you? -->
+                <div class="form-section">
+                    <label>What can I do for you?</label>
+                    <div class="tags">
+                        <label class="tag">
+                            <input type="radio" name="service" value="UGC" checked />
+                            <i>UGC</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="service" value="Brand Photography"  />
+                            <i>Brand Photography</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="service" value="Short-Form Video"  />
+                            <i>Short-Form Video</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="service" value="Content Strategy"  />
+                            <i>Content Strategy</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="service" value="Identity"  />
+                            <i>Identity</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="service" value="Account Management"  />
+                            <i>Account Management</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="service" value="Other"  />
+                            <i>Other</i>
+                            <span class="check-bg"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Budget range -->
+                <div class="form-section">
+                    <label>Do you have a budget range?</label>
+                    <div class="budget">
+                        <label class="tag">
+                            <input type="radio" name="budget" value="Under $500" checked/>
+                            <i>Under $500</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="budget" value="$500–$1k" />
+                            <i>$500–$1k</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="budget" value="$1k–$2.5k" />
+                            <i>$1k–$2.5k</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="budget" value="$2.5k–$5k" />
+                            <i>$2.5k–$5k</i>
+                            <span class="check-bg"></span>
+                        </label>
+                        <label class="tag">
+                            <input type="radio" name="budget" value="$5k+" />
+                            <i>$5k+</i>
+                            <span class="check-bg"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="submit-btn">
+                <div class="pre_img">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="tabler-icon tabler-icon-send-2 text-[#C43670] text-2xl xl:text-5xl">
+                            <path
+                                d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z">
+                            </path>
+                            <path d="M6.5 12h14.5"></path>
+                        </svg>
+                    </span>
+                    <span class="hover_svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="tabler-icon tabler-icon-send-2 text-[#C43670] text-2xl xl:text-5xl">
+                            <path
+                                d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z">
+                            </path>
+                            <path d="M6.5 12h14.5"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="sec_text">
+                    <span class="pre">Submit</span>
+                    <span class="pre">Submit</span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+
+            <!-- Animated Title -->
+            <h1 class="main-heading">The ArtLogic</h1>
+
+            <!-- Page Content -->
+            <div class="main-content">
+
+                <div class="sub-header">
+                    <div>Creative Strategy & Digital Branding</div>
+                    <div>Building brands with impact</div>
+                </div>
+
+                <div class="gallery-container" id="galleryContainer">
+                    <div class="slider-track" id="galleryTrack">
+                        <img src="assets/images/01.jpg" alt="Image 1" />
+                        <img src="assets/images/02.jpg" alt="Image 2" />
+                        <img src="assets/images/01.jpg" alt="Image 3" />
+                        <img src="assets/images/02.jpg" alt="Image 4" />
+                        <img src="assets/images/01.jpg" alt="Image 5" />
+                        <!-- Duplicate for seamless scroll -->
+                        <img src="assets/images/02.jpg" alt="Image 6" />
+                        <img src="assets/images/01.jpg" alt="Image 7" />
+                        <img src="assets/images/02.jpg" alt="Image 8" />
+                        <img src="assets/images/01.jpg" alt="Image 9" />
+                        <img src="assets/images/02.jpg" alt="Image 10" />
+                    </div>
+                </div>
+
+
+
+                <section class="about-section fade-in-up">
+                    <small>(About The ArtLogic)</small>
+                    <h2 id="aboutText">
+                        I'm a passionate marketing enthusiast driven by creativity and curiosity. While I'm early in my
+                        professional journey, my love for marketing runs deep—from digital advertising to content
+                        creation. I
+                        thrive on spotting trends and bringing fresh perspectives to every project.
+                    </h2>
+                </section>
+
+                <!-- Fading Image + Text Slider Section -->
+                <section class="fade-slider-section">
+                    <div class="fade-slider">
+                        <!-- Left: Image Area -->
+                        <div class="slider-image">
+                            <img src="assets/images/01.jpg" class="active" />
+                            <img src="assets/images/02.jpg" />
+                        </div>
+
+                        <!-- Right: Text Area -->
+                        <div class="slider-text">
+                            <div class="top_text">
+                                <p class="active">
+                                    Spotify playlists I've created. But I mainly listen<br />
+                                    to the blend my boyfriend and I have.
+                                </p>
+                                <p>
+                                    Mostly quiet music when I work. I don’t like<br />
+                                    lyrics when I’m designing.
+                                </p>
+                            </div>
+
+                            <div class="bottom_counter">
+                                <span class="active">01</span>
+                                <span>02</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="assets/js/custom.js"></script>
+    <!-- GSAP Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- ScrollSmoother Plugin (from CDN unofficial build) -->
+    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script>
+
+    <script src="https://unpkg.com/split-type"></script>
+
+</body>
+
+</html>
