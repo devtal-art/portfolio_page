@@ -95,24 +95,6 @@ window.addEventListener("load", () => {
     }, 3600);
 });
 
-// Split and animate lines of #aboutText
-const splitText = new SplitType("#aboutText", { types: "lines" });
-
-gsap.from(splitText.lines, {
-    scrollTrigger: {
-        trigger: "#aboutText",
-        start: "top 80%",
-        end: "bottom 60%",
-        toggleActions: "play none none none",
-        // scrub: true  // Optional for scroll-synced effect
-    },
-    y: 50,
-    opacity: 0,
-    stagger: 0.15,
-    duration: 1,
-    ease: "power3.out"
-});
-
 // Fading Slider
 
 let currentSlide = 0;
@@ -156,3 +138,31 @@ function openPopup() {
 function closePopup() {
     document.getElementById("popupForm").classList.remove("show");
 }
+
+window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+    ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.3,
+        effects: true
+    });
+});
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+ScrollTrigger.normalizeScroll(true); // helps avoid issues with scroll hijacking
+
+ScrollSmoother.create({
+  wrapper: "#smooth-wrapper",
+  content: "#smooth-content",
+  smooth: 1.2,
+  effects: true,
+  onUpdate: () => {
+    // Recalculate triggers on smoother update
+    ScrollTrigger.refresh();
+  }
+});
