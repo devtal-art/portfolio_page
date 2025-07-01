@@ -237,25 +237,144 @@
                     </div>
                 </section>
 
-                <section class="services-section">
-                    <div class="service-card pink">
-                        <div class="content">
-                            <h2>UGC <span>(01)</span></h2>
+                <section class="cards-pin-section">
+                    <div class="cards-stack">
+                        <div class="card">
+                            <div class="inner_card">
+                                <div class="prim">
+                                    <h2>UGC</h2>
+                                    <p>(01)</p>
+                                </div>
+                                <div class="secondary">
+                                    <div>
+                                        <p>I leverage authentic content created by users to build trust and engagement
+                                            with your audience, enhancing brand credibility and reach.</p>
+                                        <ul>
+                                            <li>Authenticity</li>
+                                            <li>Engagement</li>
+                                            <li>Trust</li>
+                                            <li>Community Building</li>
+                                            <li>Brand Advocacy</li>
+                                            <li>Organic Reach</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <img src="assets/images/01.jpg" alt="UGC Image" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="service-card blue">
-                        <div class="content">
-                            <h2>Photography <span>(02)</span></h2>
-                            <p>I capture high-quality images that tell your brand's story...</p>
+                        <div class="card">
+                            <div class="inner_card">
+                                <div class="prim">
+                                    <h2>Photography</h2>
+                                    <p>(02)</p>
+                                </div>
+                                <div class="secondary">
+                                    <div>
+                                        <p>I leverage authentic content created by users to build trust and engagement
+                                            with your audience, enhancing brand credibility and reach.</p>
+                                        <ul>
+                                            <li>Authenticity</li>
+                                            <li>Engagement</li>
+                                            <li>Trust</li>
+                                            <li>Community Building</li>
+                                            <li>Brand Advocacy</li>
+                                            <li>Organic Reach</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <img src="assets/images/02.jpg" alt="UGC Image" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="service-card green">
-                        <div class="content">
-                            <h2>Strategy <span>(03)</span></h2>
-                            <p>We define positioning, audience targeting and messaging...</p>
+                        <div class="card">
+                            <div class="inner_card">
+                                <div class="prim">
+                                    <h2>Short-Form Video</h2>
+                                    <p>(03)</p>
+                                </div>
+                                <div class="secondary">
+                                    <div>
+                                        <p>I leverage authentic content created by users to build trust and engagement
+                                            with your audience, enhancing brand credibility and reach.</p>
+                                        <ul>
+                                            <li>Authenticity</li>
+                                            <li>Engagement</li>
+                                            <li>Trust</li>
+                                            <li>Community Building</li>
+                                            <li>Brand Advocacy</li>
+                                            <li>Organic Reach</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <img src="assets/images/01.jpg" alt="UGC Image" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="inner_card">
+                                <div class="prim">
+                                    <h2>Content Strategy</h2>
+                                    <p>(04)</p>
+                                </div>
+                                <div class="secondary">
+                                    <div>
+                                        <p>I leverage authentic content created by users to build trust and engagement
+                                            with your audience, enhancing brand credibility and reach.</p>
+                                        <ul>
+                                            <li>Authenticity</li>
+                                            <li>Engagement</li>
+                                            <li>Trust</li>
+                                            <li>Community Building</li>
+                                            <li>Brand Advocacy</li>
+                                            <li>Organic Reach</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <img src="assets/images/02.jpg" alt="UGC Image" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
+
+
+                <div class="contact-panel">
+                    <!-- Top Bar: Location + Clock -->
+                    <div class="contact-info-bar">
+                        <div id="location">Loading location...</div>
+                        <div id="clock">--:--:--</div>
+                    </div>
+
+                    <!-- Title -->
+                    <h2>Let's work <span>together!</span> </h2>
+
+                    <!-- Floating Buttons Container -->
+                    <div class="drag-container" id="physics-area">
+                        <button class="open-btn drag-btn" onclick="openPopup()" aria-label="Contact us"
+                            style="background:#f8dc5c">Say hii</button>
+                        <button class="open-btn drag-btn" onclick="openPopup()" aria-label="Contact us"
+                            style="background:#c9e8a4">Reach out</button>
+                        <button class="open-btn drag-btn" onclick="openPopup()" aria-label="Contact us"
+                            style="background:#7a1e1e; color: white;">Let’s chat</button>
+                        <button class="open-btn drag-btn" onclick="openPopup()" aria-label="Contact us"
+                            style="background:#cc3366">Send a message</button>
+                    </div>
+
+                    <!-- Footer Info -->
+                    <footer>
+                        <span>©2025</span>
+                        <a href="#">Instagram</a>
+                        <a href="#">YouTube</a>
+                        <a href="#">Unsplash</a>
+                        <a href="#">TikTok</a>
+                    </footer>
+                </div>
+
 
 
             </div>
@@ -263,11 +382,12 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/InertiaPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="assets/js/custom.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <!-- ScrollSmoother requires ScrollTrigger -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
@@ -275,15 +395,6 @@
 
     <!-- RoughEase, ExpoScaleEase and SlowMo are all included in the EasePack file -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
-
-    <script>
-        // use a script tag or an external JS file
-        document.addEventListener("DOMContentLoaded", (event) => {
-            gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, TextPlugin, ExpoScaleEase, SlowMo)
-            // gsap code here!
-        });
-
-    </script>
 
 </body>
 

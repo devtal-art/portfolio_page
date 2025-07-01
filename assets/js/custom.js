@@ -105,20 +105,28 @@ window.addEventListener("DOMContentLoaded", () => {
     const slideCounters = document.querySelectorAll(".slide-count");
 
     setInterval(() => {
-        // Remove active classes
-        sliderImages[currentSlide].classList.remove("active");
-        sliderTexts[currentSlide].classList.remove("active");
-        slideCounters[currentSlide].classList.remove("active");
+        // ✅ Defensive checks inside interval (optional, double protection)
+        if (
+            sliderImages[currentSlide] &&
+            sliderTexts[currentSlide] &&
+            slideCounters[currentSlide]
+        ) {
+            // Remove active classes
+            sliderImages[currentSlide].classList.remove("active");
+            sliderTexts[currentSlide].classList.remove("active");
+            slideCounters[currentSlide].classList.remove("active");
 
-        // Increment slide index
-        currentSlide = (currentSlide + 1) % sliderImages.length;
+            // Increment slide index
+            currentSlide = (currentSlide + 1) % sliderImages.length;
 
-        // Add active classes to next
-        sliderImages[currentSlide].classList.add("active");
-        sliderTexts[currentSlide].classList.add("active");
-        slideCounters[currentSlide].classList.add("active");
+            // Add active classes to next
+            sliderImages[currentSlide].classList.add("active");
+            sliderTexts[currentSlide].classList.add("active");
+            slideCounters[currentSlide].classList.add("active");
+        }
     }, 3000);
 });
+
 
 // Popup
 
@@ -139,30 +147,121 @@ function closePopup() {
     document.getElementById("popupForm").classList.remove("show");
 }
 
-window.addEventListener("load", () => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-    ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 1.3,
-        effects: true
-    });
-});
-
-
 
 gsap.registerPlugin(ScrollTrigger);
 
 ScrollTrigger.normalizeScroll(true); // helps avoid issues with scroll hijacking
 
-ScrollSmoother.create({
-  wrapper: "#smooth-wrapper",
-  content: "#smooth-content",
-  smooth: 1.2,
-  effects: true,
-  onUpdate: () => {
-    // Recalculate triggers on smoother update
-    ScrollTrigger.refresh();
-  }
+
+
+// use a script tag or an external JS file
+document.addEventListener("DOMContentLoaded", (event) => {
+    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, TextPlugin, ExpoScaleEase, SlowMo)
+    // gsap code here!
+});
+
+
+// Stacked Cards
+gsap.registerPlugin(ScrollTrigger);
+
+const cards = document.querySelectorAll(".card");
+
+ScrollTrigger.create({
+  trigger: ".cards-pin-section",
+  start: "top top",
+  end: `+=${cards.length * 100}%`,
+  pin: ".cards-stack",
+  scrub: true,
+});
+
+cards.forEach((card, index) => {
+  const offsetY = Math.min(10 + index * 20, 80); // Cap max Y offset at 80px
+
+  gsap.fromTo(
+    card,
+    {
+      y: "100vh",
+      scale: 0.8,
+      zIndex: 10 + index,
+    },
+    {
+      y: `${offsetY}px`, // Stacking at top with increasing offset
+      scale: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".cards-pin-section",
+        start: `${(index * 100) / cards.length}% top`,
+        end: `${((index + 1) * 100) / cards.length}% top`,
+        scrub: true,
+      },
+    }
+  );
+});
+
+
+
+// Footer Cards
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const dragArea = document.querySelector(".drag-container");
+  const buttons = document.querySelectorAll(".drag-btn");
+  let topZIndex = 10; // Track z-index for stacking
+
+  buttons.forEach((btn, i) => {
+    btn.style.left = `${100 + i * 150}px`;
+    btn.style.top = `${100 + i * 50}px`;
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    btn.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      offsetX = e.clientX - btn.offsetLeft;
+      offsetY = e.clientY - btn.offsetTop;
+      btn.style.cursor = "grabbing";
+
+      // Bring the clicked button to front
+      topZIndex++;
+      btn.style.zIndex = topZIndex;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+
+      let x = e.clientX - offsetX;
+      let y = e.clientY - offsetY;
+
+      const rect = dragArea.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+
+      x = Math.max(0, Math.min(x, rect.width - btnRect.width));
+      y = Math.max(0, Math.min(y, rect.height - btnRect.height));
+
+      btn.style.left = `${x}px`;
+      btn.style.top = `${y}px`;
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+      btn.style.cursor = "grab";
+    });
+  });
+});
+
+
+const dragArea = document.querySelector(".drag-container");
+
+buttons.forEach(btn => {
+  const size = btn.getBoundingClientRect();
+  const randX = Math.random() * (dragArea.offsetWidth - size.width);
+  const randY = Math.random() * (dragArea.offsetHeight - size.height);
+
+  gsap.set(btn, { x: randX, y: randY });
+
+  Draggable.create(btn, {
+    bounds: dragArea,
+    inertia: true,
+    type: "x,y"
+  });
 });
