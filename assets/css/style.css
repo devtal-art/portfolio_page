@@ -15,7 +15,7 @@
 
 @keyframes expandFont {
     to {
-        font-size: 14vw;
+        font-size: 11vw;
         line-height: 10vw;
     }
 }
@@ -159,6 +159,8 @@ body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 999;
+    transition: opacity 0.4s ease;
+    will-change: opacity;
 }
 
 .contact-button img {
@@ -865,7 +867,7 @@ img {
 
 .drag-btn {
     position: absolute;
-    padding: 12px 24px;
+    padding: 12px 40px;
     border-radius: 999px;
     border: none;
     font-weight: bold;
@@ -873,6 +875,7 @@ img {
     background: #f8dc5c;
     cursor: grab;
     user-select: none;
+    font-size: 3vw;
 }
 
 footer {
@@ -910,11 +913,38 @@ footer span {
     text-decoration: none;
     color: #c53965;
     font-weight: 700;
-    transform: scale(0.9);
     transition: 0.4s ease-in-out;
 }
 
 footer a:hover {
     color: #000;
-    transform: scale(1);
+}
+
+footer.contact-footer a {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6vw;
+    height: 2vw;
+    overflow: hidden;
+    justify-content: start;
+}
+
+footer.contact-footer a span.pre {
+    transition: transform 0.4s ease-in-out;
+}
+
+footer.contact-footer a span.pre:first-child {
+    transform: translateY(0%);
+}
+
+footer.contact-footer a span.pre:last-child {
+    transform: translateY(100%);
+}
+
+footer.contact-footer a:hover span.pre:first-child {
+    transform: translateY(-100%);
+}
+
+footer.contact-footer a:hover span.pre:last-child {
+    transform: translateY(-100%);
 }

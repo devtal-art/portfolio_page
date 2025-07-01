@@ -201,67 +201,87 @@ cards.forEach((card, index) => {
 
 
 // Footer Cards
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const dragArea = document.querySelector(".drag-container");
-  const buttons = document.querySelectorAll(".drag-btn");
-  let topZIndex = 10; // Track z-index for stacking
-
-  buttons.forEach((btn, i) => {
-    btn.style.left = `${100 + i * 150}px`;
-    btn.style.top = `${100 + i * 50}px`;
-
-    let isDragging = false;
-    let offsetX, offsetY;
-
-    btn.addEventListener("mousedown", (e) => {
-      isDragging = true;
-      offsetX = e.clientX - btn.offsetLeft;
-      offsetY = e.clientY - btn.offsetTop;
-      btn.style.cursor = "grabbing";
-
-      // Bring the clicked button to front
-      topZIndex++;
-      btn.style.zIndex = topZIndex;
-    });
-
-    document.addEventListener("mousemove", (e) => {
-      if (!isDragging) return;
-
-      let x = e.clientX - offsetX;
-      let y = e.clientY - offsetY;
-
-      const rect = dragArea.getBoundingClientRect();
-      const btnRect = btn.getBoundingClientRect();
-
-      x = Math.max(0, Math.min(x, rect.width - btnRect.width));
-      y = Math.max(0, Math.min(y, rect.height - btnRect.height));
-
-      btn.style.left = `${x}px`;
-      btn.style.top = `${y}px`;
-    });
-
-    document.addEventListener("mouseup", () => {
-      isDragging = false;
-      btn.style.cursor = "grab";
-    });
-  });
-});
-
-
 const dragArea = document.querySelector(".drag-container");
+const buttons = document.querySelectorAll(".drag-btn");
 
-buttons.forEach(btn => {
+const placedRects = []; // Store placed button bounding boxes
+
+buttons.forEach((btn, i) => {
   const size = btn.getBoundingClientRect();
-  const randX = Math.random() * (dragArea.offsetWidth - size.width);
-  const randY = Math.random() * (dragArea.offsetHeight - size.height);
+  const btnWidth = size.width;
+  const btnHeight = size.height;
 
-  gsap.set(btn, { x: randX, y: randY });
+  let tries = 0;
+  let randX, randY;
+  let overlaps;
 
+  do {
+    overlaps = false;
+    randX = Math.random() * (dragArea.offsetWidth - btnWidth);
+    randY = Math.random() * (dragArea.offsetHeight - btnHeight - 50);
+
+    const newRect = {
+      left: randX,
+      top: randY,
+      right: randX + btnWidth,
+      bottom: randY + btnHeight
+    };
+
+    for (const rect of placedRects) {
+      if (
+        !(newRect.right < rect.left ||
+          newRect.left > rect.right ||
+          newRect.bottom < rect.top ||
+          newRect.top > rect.bottom)
+      ) {
+        overlaps = true;
+        break;
+      }
+    }
+
+    tries++;
+  } while (overlaps && tries < 50); // prevent infinite loop
+
+  placedRects.push({
+    left: randX,
+    top: randY,
+    right: randX + btnWidth,
+    bottom: randY + btnHeight
+  });
+
+  // Drop in with bounce
+  gsap.set(btn, { x: randX, y: -150 });
+  gsap.to(btn, {
+    y: randY,
+    duration: 1,
+    delay: 0.2 + i * 0.15,
+    ease: "bounce.out"
+  });
+
+  // Make draggable
   Draggable.create(btn, {
     bounds: dragArea,
     inertia: true,
     type: "x,y"
   });
+});
+
+
+
+// Contact Buttons Hide
+
+// Smooth show/hide contact button on scroll
+const contactButton = document.querySelector('.contact-button');
+const hideSection = document.querySelector('.contact-panel'); // or use another selector if needed
+
+ScrollTrigger.create({
+  trigger: hideSection,
+  start: "top center",
+  end: "bottom center",
+  onEnter: () => {
+    gsap.to(contactButton, { autoAlpha: 0, duration: 0.5, ease: "power1.out" });
+  },
+  onLeaveBack: () => {
+    gsap.to(contactButton, { autoAlpha: 1, duration: 0.5, ease: "power1.out" });
+  },
 });
