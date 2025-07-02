@@ -186,8 +186,8 @@ body {
 }
 
 .slider-track img {
-    width: 420px;
-    height: 480px;
+    width: 32vw;
+    height: 60vh;
     object-fit: cover;
     border: 5px solid #fff;
     border-radius: 12px;
@@ -785,6 +785,10 @@ img {
     gap: 150px;
 }
 
+.inner_card .secondary div{
+    width: 50%;
+}
+
 .inner_card .secondary p {
     font-size: 1.8vw;
     color: #000000;
@@ -809,7 +813,7 @@ img {
 }
 
 .inner_card .secondary img {
-    max-width: 600px;
+    max-width: 100%;
     border-radius: 30px;
 }
 
