@@ -1,8 +1,8 @@
 // Smooth Scroll
 
 window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  top: 0,
+  behavior: "smooth"
 });
 
 // Ensure page always loads from top
@@ -14,10 +14,10 @@ document.body.style.overflow = "hidden";
 
 // Enable scroll after heading animation ends
 window.addEventListener("load", () => {
-    setTimeout(() => {
-        document.body.style.overflow = "auto";
-        window.scrollTo(0, 0);
-    }, 3800); // matches total animation time
+  setTimeout(() => {
+    document.body.style.overflow = "auto";
+    window.scrollTo(0, 0);
+  }, 3800); // matches total animation time
 });
 
 // Setup gallery scroll
@@ -30,22 +30,22 @@ let paused = false;
 
 // Duplicate content for seamless scroll
 function duplicateTrackContent() {
-    const original = [...track.children];
-    original.forEach((child) => {
-        const clone = child.cloneNode(true);
-        track.appendChild(clone);
-    });
+  const original = [...track.children];
+  original.forEach((child) => {
+    const clone = child.cloneNode(true);
+    track.appendChild(clone);
+  });
 }
 
 function autoScroll() {
-    if (!paused) {
-        scrollPosition += scrollSpeed;
-        track.style.transform = `translateX(-${scrollPosition}px)`;
-        if (scrollPosition >= track.scrollWidth / 2) {
-            scrollPosition = 0;
-        }
+  if (!paused) {
+    scrollPosition += scrollSpeed;
+    track.style.transform = `translateX(-${scrollPosition}px)`;
+    if (scrollPosition >= track.scrollWidth / 2) {
+      scrollPosition = 0;
     }
-    requestAnimationFrame(autoScroll);
+  }
+  requestAnimationFrame(autoScroll);
 }
 
 // Pause slider on hover
@@ -58,41 +58,41 @@ autoScroll();
 
 // After GSAP animation ends, unlock scroll
 window.addEventListener("load", () => {
-    setTimeout(() => {
-        const heading = document.querySelector(".main-heading");
-        heading.classList.add("static");
+  setTimeout(() => {
+    const heading = document.querySelector(".main-heading");
+    heading.classList.add("static");
 
-        // Unlock scroll after animation
-        document.body.style.overflowY = "scroll";
-        window.scrollTo(0, 0); // force scroll to top again just in case
-    }, 3500); // Match your GSAP timing
+    // Unlock scroll after animation
+    document.body.style.overflowY = "scroll";
+    window.scrollTo(0, 0); // force scroll to top again just in case
+  }, 3500); // Match your GSAP timing
 });
 
 
 // Smooth Scroll to Top Button
 
 window.addEventListener("load", () => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-    ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 1.5,       // lower is slower
-        effects: true
-    });
+  ScrollSmoother.create({
+    wrapper: "#smooth-wrapper",
+    content: "#smooth-content",
+    smooth: 1.5,       // lower is slower
+    effects: true
+  });
 });
 
 // Contact button show
 
 window.addEventListener("load", () => {
-    // Ensure scroll position is top
-    window.scrollTo(0, 0);
+  // Ensure scroll position is top
+  window.scrollTo(0, 0);
 
-    // Wait until intro animation finishes (~3.6s or whatever you're using)
-    setTimeout(() => {
-        const button = document.querySelector(".contact-button");
-        button.classList.add("show");
-    }, 3600);
+  // Wait until intro animation finishes (~3.6s or whatever you're using)
+  setTimeout(() => {
+    const button = document.querySelector(".contact-button");
+    button.classList.add("show");
+  }, 3600);
 });
 
 // Fading Slider
@@ -100,31 +100,31 @@ window.addEventListener("load", () => {
 let currentSlide = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
-    const sliderImages = document.querySelectorAll(".slide-img");
-    const sliderTexts = document.querySelectorAll(".slide-text");
-    const slideCounters = document.querySelectorAll(".slide-count");
+  const sliderImages = document.querySelectorAll(".slide-img");
+  const sliderTexts = document.querySelectorAll(".slide-text");
+  const slideCounters = document.querySelectorAll(".slide-count");
 
-    setInterval(() => {
-        // ✅ Defensive checks inside interval (optional, double protection)
-        if (
-            sliderImages[currentSlide] &&
-            sliderTexts[currentSlide] &&
-            slideCounters[currentSlide]
-        ) {
-            // Remove active classes
-            sliderImages[currentSlide].classList.remove("active");
-            sliderTexts[currentSlide].classList.remove("active");
-            slideCounters[currentSlide].classList.remove("active");
+  setInterval(() => {
+    // ✅ Defensive checks inside interval (optional, double protection)
+    if (
+      sliderImages[currentSlide] &&
+      sliderTexts[currentSlide] &&
+      slideCounters[currentSlide]
+    ) {
+      // Remove active classes
+      sliderImages[currentSlide].classList.remove("active");
+      sliderTexts[currentSlide].classList.remove("active");
+      slideCounters[currentSlide].classList.remove("active");
 
-            // Increment slide index
-            currentSlide = (currentSlide + 1) % sliderImages.length;
+      // Increment slide index
+      currentSlide = (currentSlide + 1) % sliderImages.length;
 
-            // Add active classes to next
-            sliderImages[currentSlide].classList.add("active");
-            sliderTexts[currentSlide].classList.add("active");
-            slideCounters[currentSlide].classList.add("active");
-        }
-    }, 3000);
+      // Add active classes to next
+      sliderImages[currentSlide].classList.add("active");
+      sliderTexts[currentSlide].classList.add("active");
+      slideCounters[currentSlide].classList.add("active");
+    }
+  }, 3000);
 });
 
 
@@ -132,19 +132,19 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // Enable single-select tag groups
 document.querySelectorAll('.tag').forEach(tag => {
-    tag.addEventListener('click', () => {
-        const group = tag.dataset.group;
-        document.querySelectorAll(`.tag[data-group="${group}"]`).forEach(el => el.classList.remove('selected'));
-        tag.classList.add('selected');
-    });
+  tag.addEventListener('click', () => {
+    const group = tag.dataset.group;
+    document.querySelectorAll(`.tag[data-group="${group}"]`).forEach(el => el.classList.remove('selected'));
+    tag.classList.add('selected');
+  });
 });
 
 function openPopup() {
-    document.getElementById("popupForm").classList.add("show");
+  document.getElementById("popupForm").classList.add("show");
 }
 
 function closePopup() {
-    document.getElementById("popupForm").classList.remove("show");
+  document.getElementById("popupForm").classList.remove("show");
 }
 
 
@@ -156,8 +156,8 @@ ScrollTrigger.normalizeScroll(true); // helps avoid issues with scroll hijacking
 
 // use a script tag or an external JS file
 document.addEventListener("DOMContentLoaded", (event) => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, TextPlugin, ExpoScaleEase, SlowMo)
-    // gsap code here!
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, TextPlugin, ExpoScaleEase, SlowMo)
+  // gsap code here!
 });
 
 
@@ -285,3 +285,27 @@ ScrollTrigger.create({
     gsap.to(contactButton, { autoAlpha: 1, duration: 0.5, ease: "power1.out" });
   },
 });
+
+
+// ✅ Real-Time Clock
+function updateClock() {
+  const now = new Date();
+  const timeString = now.toLocaleTimeString([], { hour12: false });
+  document.getElementById('clock').textContent = timeString;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ✅ Get User Location (City, Country - Approximate)
+function updateLocation() {
+  fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+      const locationText = `${data.city}, ${data.region}, ${data.country_name}`;
+      document.getElementById('location').textContent = locationText;
+    })
+    .catch(() => {
+      document.getElementById('location').textContent = "Location unavailable";
+    });
+}
+updateLocation();

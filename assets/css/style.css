@@ -120,8 +120,8 @@ body {
 .sub-header {
     display: flex;
     justify-content: space-between;
-    padding: 0 40px;
-    font-size: 28px;
+    padding: 0 20px;
+    font-size: 2vw;
     color: #f0ccdf;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -457,6 +457,7 @@ body {
     flex-direction: column;
     gap: 24px;
     color: #6d0036;
+    max-height: 90vh;
 }
 
 /* Header and close button */
@@ -701,20 +702,6 @@ body {
     transform: translateY(-100%);
 }
 
-
-@media (max-width: 768px) {
-    .main-heading {
-        font-size: 10vw;
-    }
-
-    .sub-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 10px;
-    }
-}
-
 .cards-pin-section {
     height: 535vh;
     /* large enough scroll space */
@@ -785,7 +772,7 @@ img {
     gap: 150px;
 }
 
-.inner_card .secondary div{
+.inner_card .secondary div {
     width: 50%;
 }
 
@@ -884,7 +871,7 @@ img {
 
 footer {
     position: absolute;
-    bottom: 60px;
+    bottom: 30px;
     left: 60px;
     right: 60px;
     display: flex;
@@ -951,4 +938,43 @@ footer.contact-footer a:hover span.pre:first-child {
 
 footer.contact-footer a:hover span.pre:last-child {
     transform: translateY(-100%);
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .form-section label.tag {
+        font-size: 1vw;
+        padding: 4px 9px;
+    }
+
+    .form-section {
+        padding: 14px;
+    }
+
+    .submit-btn {
+        margin-top: 0;
+    }
+
+    .form-section {
+        gap: 4px;
+    }
+
+    .inner_card .prim h2 {
+        font-size: 6vw;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .main-heading {
+        font-size: 10vw;
+    }
+
+    .sub-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
 }
