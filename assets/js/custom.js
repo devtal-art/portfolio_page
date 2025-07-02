@@ -155,7 +155,7 @@ ScrollTrigger.normalizeScroll(true); // helps avoid issues with scroll hijacking
 
 
 // use a script tag or an external JS file
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin, TextPlugin, ExpoScaleEase, SlowMo)
   // gsap code here!
 });
@@ -309,3 +309,89 @@ function updateLocation() {
     });
 }
 updateLocation();
+
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".drag-container");
+  const buttons = Array.from(document.querySelectorAll(".drag-btn"));
+
+  const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } = Matter;
+
+  const engine = Engine.create();
+  const world = engine.world;
+
+  const render = Render.create({
+    element: container,
+    engine: engine,
+    options: {
+      width: container.offsetWidth,
+      height: container.offsetHeight,
+      wireframes: false,
+      background: 'transparent'
+    }
+  });
+
+  Render.run(render);
+  const runner = Runner.create();
+  Runner.run(runner, engine);
+
+  // Add walls
+  const ground = Bodies.rectangle(container.offsetWidth / 2, container.offsetHeight + 50, container.offsetWidth, 100, {
+    isStatic: true
+  });
+  const leftWall = Bodies.rectangle(-50, container.offsetHeight / 2, 100, container.offsetHeight, { isStatic: true });
+  const rightWall = Bodies.rectangle(container.offsetWidth + 50, container.offsetHeight / 2, 100, container.offsetHeight, { isStatic: true });
+
+  Composite.add(world, [ground, leftWall, rightWall]);
+
+  // Add buttons as physics objects
+  buttons.forEach(btn => {
+    const rect = btn.getBoundingClientRect();
+    const x = Math.random() * (container.offsetWidth - rect.width);
+    const y = -Math.random() * 300;
+
+    const body = Bodies.rectangle(x + rect.width / 2, y, rect.width, rect.height, {
+      restitution: 0.6, // bounce
+      friction: 0.1,
+      angle: Math.random() * 2 * Math.PI,
+    });
+
+    Composite.add(world, body);
+
+    // Sync button position to physics body
+    Matter.Events.on(engine, "afterUpdate", () => {
+      btn.style.left = `${body.position.x - rect.width / 2}px`;
+      btn.style.top = `${body.position.y - rect.height / 2}px`;
+      btn.style.transform = `rotate(${body.angle}rad)`;
+    });
+
+    // Optional: Mouse dragging
+    const mouse = Mouse.create(container);
+    const mouseConstraint = MouseConstraint.create(engine, {
+      mouse,
+      constraint: {
+        stiffness: 0.2,
+        render: { visible: false }
+      }
+    });
+    Composite.add(world, mouseConstraint);
+  });
+});
+
+// Click events on buttons
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Example action: open popup or scroll
+    openPopup(); // or any other function like scrollToSection()
+
+    // Optional visual feedback
+    btn.style.transform += " scale(1.1)";
+    setTimeout(() => {
+      btn.style.transform = btn.style.transform.replace(" scale(1.1)", "");
+    }, 200);
+  });
+});

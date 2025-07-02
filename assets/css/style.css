@@ -856,17 +856,28 @@ img {
     overflow: hidden;
 }
 
+.drag-container canvas {
+    opacity: 0;
+    /* display: none; */
+    position: relative;
+    z-index: 1;
+}
+
 .drag-btn {
     position: absolute;
     padding: 12px 40px;
-    border-radius: 999px;
+    border-radius: 1999px;
     border: none;
     font-weight: bold;
     color: #000;
     background: #f8dc5c;
     cursor: grab;
     user-select: none;
-    font-size: 3vw;
+    font-size: 6vw;
+    transform: translate(0, 0);
+    cursor: grab;
+    text-wrap-mode: nowrap;
+    transition: transform 0.3s ease;
 }
 
 footer {
@@ -889,13 +900,6 @@ footer {
 
 .contact-panel h2 span {
     color: #000;
-}
-
-.drag-btn {
-    position: absolute;
-    transform: translate(0, 0);
-    /* optional */
-    cursor: grab;
 }
 
 footer a,
@@ -940,6 +944,24 @@ footer.contact-footer a:hover span.pre:last-child {
     transform: translateY(-100%);
 }
 
+button.svg_btn {
+    padding: 20px;
+    width: 9vw;
+    height: 9vw;
+    border-radius: 80px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.svg_btn svg {
+    max-width: 5vw;
+    max-height: 5vw;
+}
+
+button.svg_btn svg * {
+    fill: #ffffff;
+}
 
 
 @media screen and (max-width: 1200px) {
