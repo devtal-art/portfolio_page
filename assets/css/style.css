@@ -743,7 +743,7 @@ body.popup-open #smooth-wrapper {
 }
 
 .cards-pin-section {
-    height: 340vh;
+    height: 390vh;
     /* large enough scroll space */
     position: relative;
 }
