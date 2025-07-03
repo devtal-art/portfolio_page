@@ -69,18 +69,31 @@ window.addEventListener("load", () => {
 });
 
 
-// Smooth Scroll to Top Button
-
 window.addEventListener("load", () => {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-  ScrollSmoother.create({
+  const smoother = ScrollSmoother.create({
     wrapper: "#smooth-wrapper",
     content: "#smooth-content",
     smooth: 1.5,       // lower is slower
     effects: true
   });
+
+  // Scroll control during popup interaction
+  window.openPopup = function () {
+    smoother.paused(true); // Pause smooth scroll
+    document.body.classList.add("popup-open");
+    document.querySelector(".popup").classList.add("active"); 
+  };
+
+  window.closePopup = function () {
+    smoother.paused(false); // Resume smooth scroll
+    document.body.classList.remove("popup-open");
+    document.querySelector(".popup").classList.remove("active");
+  };
 });
+
+
 
 // Contact button show
 
@@ -165,40 +178,36 @@ document.addEventListener("DOMContentLoaded", () => {
 gsap.registerPlugin(ScrollTrigger);
 
 const cards = document.querySelectorAll(".card");
+const scrollPerCard = 500; // in vh, controls how much scroll is needed per card
 
+// Total scroll length = number of cards * scrollPerCard
 ScrollTrigger.create({
   trigger: ".cards-pin-section",
   start: "top top",
-  end: `+=${cards.length * 100}%`,
+  end: () => `+=${cards.length * scrollPerCard}vh`,
   pin: ".cards-stack",
   scrub: true,
 });
 
 cards.forEach((card, index) => {
-  const offsetY = Math.min(20 + index * 40, 120); // vertical offset between stacked cards
-
-  gsap.fromTo(
-    card,
-    {
-      y: "100vh", // start from below screen
-      scale: 0.9,
-      zIndex: 10 + index,
-    },
-    {
-      y: `${offsetY}px`,
-      scale: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".cards-pin-section",
-        start: `${(index * 100) / cards.length}% top`,
-        end: `${((index + 1) * 100) / cards.length}% top`,
-        scrub: true,
-      },
+  gsap.fromTo(card, {
+    y: 100,
+    opacity: 0,
+    scale: 0.9,
+    zIndex: index + 1
+  }, {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".cards-pin-section",
+      start: () => `${index * scrollPerCard}vh top`,
+      end: () => `${(index + 1) * scrollPerCard}vh top`,
+      scrub: true
     }
-  );
+  });
 });
-
-
 
 
 // Footer Cards
@@ -275,23 +284,25 @@ buttons.forEach((btn, i) => {
 const contactButton = document.querySelector('.contact-button');
 const hideSection = document.querySelector('.contact-panel'); // or use another selector if needed
 
-ScrollTrigger.create({
-  trigger: hideSection,
-  start: "top center",
-  end: "bottom center",
-  onEnter: () => {
-    gsap.to(contactButton, { autoAlpha: 0, duration: 0.5, ease: "power1.out" });
-  },
-  onLeaveBack: () => {
-    gsap.to(contactButton, { autoAlpha: 1, duration: 0.5, ease: "power1.out" });
-  },
-});
+if (contactButton && hideSection) {
+  ScrollTrigger.create({
+    trigger: hideSection,
+    start: "top center",
+    end: "bottom center",
+    onEnter: () => {
+      gsap.to(contactButton, { autoAlpha: 0, duration: 0.5, ease: "power1.out" });
+    },
+    onLeaveBack: () => {
+      gsap.to(contactButton, { autoAlpha: 1, duration: 0.5, ease: "power1.out" });
+    },
+  });
+}
 
 
-// ✅ Real-Time Clock
+// ✅ Real-Time Clock in 12-Hour Format
 function updateClock() {
   const now = new Date();
-  const timeString = now.toLocaleTimeString([], { hour12: false });
+  const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
   document.getElementById('clock').textContent = timeString;
 }
 setInterval(updateClock, 1000);
@@ -312,6 +323,9 @@ function updateLocation() {
 updateLocation();
 
 
+
+
+// ✅ Draggable Footer Buttons with Physics
 
 window.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".drag-container");
@@ -384,6 +398,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
+    console.log(`Button clicked: ${btn.textContent}`);
     e.preventDefault();
 
     // Example action: open popup or scroll
@@ -396,6 +411,7 @@ buttons.forEach((btn) => {
     }, 200);
   });
 });
+
 
 
 // Sliding but static Cards

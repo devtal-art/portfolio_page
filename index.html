@@ -45,15 +45,15 @@
             <div class="form-grid">
                 <div class="form-section">
                     <label>Full name</label>
-                    <input type="text" placeholder="Fiona Wong" />
+                    <input type="text" placeholder="Tell me your Full name" />
                 </div>
                 <div class="form-section">
                     <label>Email</label>
-                    <input type="email" placeholder="fionawong@gmail.com" />
+                    <input type="email" placeholder="Tell me your Email" />
                 </div>
                 <div class="form-section">
                     <label>Company</label>
-                    <input type="text" placeholder="Fifi Vintage" />
+                    <input type="text" placeholder="Tell me your Company name" />
                 </div>
                 <div class="form-section">
                     <label>Project details</label>
@@ -174,29 +174,35 @@
             <!-- Page Content -->
             <div class="main-content">
 
-                <div class="sub-header">
-                    <div>Content Creation & Digital Storytelling</div>
-                    <div>Scaling brands reach and impact</div>
-                </div>
 
-                <div class="gallery-container" id="galleryContainer">
-                    <div class="slider-track" id="galleryTrack">
-                        <img src="assets/images/01.jpg" alt="Image 1" />
-                        <img src="assets/images/02.jpg" alt="Image 2" />
-                        <img src="assets/images/01.jpg" alt="Image 3" />
-                        <img src="assets/images/02.jpg" alt="Image 4" />
-                        <img src="assets/images/01.jpg" alt="Image 5" />
-                        <!-- Duplicate for seamless scroll -->
-                        <img src="assets/images/02.jpg" alt="Image 6" />
-                        <img src="assets/images/01.jpg" alt="Image 7" />
-                        <img src="assets/images/02.jpg" alt="Image 8" />
-                        <img src="assets/images/01.jpg" alt="Image 9" />
-                        <img src="assets/images/02.jpg" alt="Image 10" />
+                <div class="top_section">
+
+                    <!-- Subtitles -->
+                    <div class="sub-header">
+                        <div>Content Creation & Digital Storytelling</div>
+                        <div>Scaling brands reach and impact</div>
                     </div>
+
+                    <!-- Gallery Slider -->
+                    <div class="gallery-container" id="galleryContainer">
+                        <div class="slider-track" id="galleryTrack">
+                            <img src="assets/images/01.jpg" alt="Image 1" />
+                            <img src="assets/images/02.jpg" alt="Image 2" />
+                            <img src="assets/images/01.jpg" alt="Image 3" />
+                            <img src="assets/images/02.jpg" alt="Image 4" />
+                            <img src="assets/images/01.jpg" alt="Image 5" />
+                            <!-- Duplicate for seamless scroll -->
+                            <img src="assets/images/02.jpg" alt="Image 6" />
+                            <img src="assets/images/01.jpg" alt="Image 7" />
+                            <img src="assets/images/02.jpg" alt="Image 8" />
+                            <img src="assets/images/01.jpg" alt="Image 9" />
+                            <img src="assets/images/02.jpg" alt="Image 10" />
+                        </div>
+                    </div>
+
                 </div>
 
-
-
+                <!-- About Section (Typewriter) -->
                 <section class="about-section fade-in-up about-typewriter">
                     <small>(About Gurpreet)</small>
                     <h2 id="typewriterText"></h2>
@@ -231,6 +237,7 @@
                     </div>
                 </section>
 
+                <!-- Stack Cards -->
                 <section class="cards-pin-section">
                     <div class="cards-stack">
                         <div class="card">
@@ -336,7 +343,7 @@
                     </div>
                 </section>
 
-
+                <!-- Footer Buttons Draggable -->
                 <div class="contact-panel">
                     <!-- Top Bar: Location + Clock -->
                     <div class="contact-info-bar">
@@ -345,7 +352,7 @@
                     </div>
 
                     <!-- Title -->
-                    <h2>Let's work <span>together!</span> </h2>
+                    <h2>Let's work <span>together!</span> </h2> 
 
                     <!-- Floating Buttons Container -->
                     <div class="drag-container" id="physics-area">
@@ -390,6 +397,7 @@
                                 </g>
                             </svg>
                         </button>
+                        <div class="canvas-overlay" onclick="openPopup()"></div>
                     </div>
 
                     <!-- Footer Info -->
@@ -441,8 +449,6 @@
                         </div>
                     </footer>
                 </div>
-
-
 
             </div>
 
