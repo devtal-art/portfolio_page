@@ -69,18 +69,31 @@ window.addEventListener("load", () => {
 });
 
 
-// Smooth Scroll to Top Button
-
 window.addEventListener("load", () => {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-  ScrollSmoother.create({
+  const smoother = ScrollSmoother.create({
     wrapper: "#smooth-wrapper",
     content: "#smooth-content",
     smooth: 1.5,       // lower is slower
     effects: true
   });
+
+  // Scroll control during popup interaction
+  window.openPopup = function () {
+    smoother.paused(true); // Pause smooth scroll
+    document.body.classList.add("popup-open");
+    document.querySelector(".popup").classList.add("active");
+  };
+
+  window.closePopup = function () {
+    smoother.paused(false); // Resume smooth scroll
+    document.body.classList.remove("popup-open");
+    document.querySelector(".popup").classList.remove("active");
+  };
 });
+
+
 
 // Contact button show
 

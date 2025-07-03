@@ -515,6 +515,10 @@ body {
     /* font-weight: 900; */
 }
 
+body.popup-open #smooth-wrapper {
+    pointer-events: none;
+}
+
 .close-btn {
     border: none;
     cursor: pointer;
@@ -891,7 +895,7 @@ img {
 .drag-container {
     position: relative;
     width: 100%;
-    height: 68vh;
+    height: 65vh;
     margin-top: 2rem;
     overflow: hidden;
 }
@@ -901,6 +905,7 @@ img {
     /* display: none; */
     position: relative;
     z-index: 1;
+    width: 100%;
 }
 
 .drag-btn {
@@ -913,7 +918,7 @@ img {
     background: #f8dc5c;
     cursor: grab;
     user-select: none;
-    font-size: 6vw;
+    font-size: 4vw;
     transform: translate(0, 0);
     cursor: grab;
     text-wrap-mode: nowrap;
@@ -1053,6 +1058,11 @@ button.svg_btn svg * {
     color: #fff;
 }
 
+.popup.active {
+    bottom: 0;
+    opacity: 1;
+}
+
 @media screen and (max-width: 1200px) {
     .form-section label.tag {
         font-size: 1vw;
@@ -1077,6 +1087,108 @@ button.svg_btn svg * {
 }
 
 
+@media screen and (max-width: 900px) {
+    .slider-track img {
+        height: 40vh;
+        width: 40vw;
+    }
+
+    .gallery-container {
+        margin-bottom: 50vw;
+    }
+
+    .contact-button a .sec_text {
+        font-size: 1.6vw;
+        height: 4vw;
+    }
+
+    .contact-button a .sec_text span {
+        font-size: 3vw;
+    }
+
+    .contact-button a .pre_img {
+        width: 6vw;
+        height: 6vw;
+    }
+
+    .contact-button img {
+        width: 6vw;
+        height: 6vw;
+    }
+
+    .contact-button a:hover .pre_img span.hover_svg svg {
+        width: 3vw;
+        height: 3vw;
+    }
+
+    .fade-slider {
+        flex-direction: column;
+    }
+
+    .slider-image {
+        width: 100%;
+    }
+
+    .slider-text {
+        width: 100%;
+        padding-bottom: 200px;
+    }
+
+    .slider-text p {
+        font-size: 4vw;
+    }
+
+    .inner_card .secondary {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .inner_card .secondary div {
+        width: 100%;
+    }
+
+    .inner_card .secondary p {
+        font-size: 3vw;
+    }
+
+    .inner_card .secondary ul {
+        margin-top: 10px;
+    }
+
+    .inner_card .secondary ul li {
+        font-size: 2vw;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-section label {
+        font-size: 2vw;
+    }
+
+    .form-section input,
+    .form-section textarea {
+        font-size: 2vw;
+        resize: none;
+    }
+
+    .tag i {
+        font-size: 2vw;
+    }
+
+
+    .submit-btn .pre_img {
+        width: 6vw;
+        height: 6vw;
+    }
+
+    .submit-btn .sec_text {
+        font-size: 3vw;
+        height: 4vw;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .main-heading {
         font-size: 10vw;
@@ -1088,4 +1200,193 @@ button.svg_btn svg * {
         text-align: center;
         gap: 10px;
     }
+}
+
+
+@media screen and (max-width: 768px) {
+    @keyframes expandFont {
+        to {
+            font-size: 18vw;
+            white-space: normal;
+            line-height: 18vw;
+        }
+    }
+
+    .main-heading {
+        white-space: normal;
+    }
+
+    .sub-header {
+        font-size: 5vw;
+    }
+
+    .slider-track img {
+        height: 60vw;
+        width: 70vw;
+    }
+
+    .top_section {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40vw;
+        padding: 70px 0;
+    }
+
+    .top_section .sub-header {
+        order: 2;
+    }
+
+    .top_section .gallery-container {
+        orphans: 1;
+        margin-bottom: 50px;
+    }
+
+    .contact-button img {
+        width: 9vw;
+        height: 9vw;
+    }
+
+    .contact-button a .pre_img {
+        width: 9vw;
+        height: 9vw;
+    }
+
+    .contact-button a {
+        border-radius: 9vw;
+    }
+
+    .contact-button a .sec_text span {
+        font-size: 4vw;
+    }
+
+    .contact-button a .sec_text {
+        height: 5vw;
+    }
+
+    .about-section h2 {
+        font-size: 7vw;
+        margin-top: 20px;
+    }
+
+    .fade-slider .top_text p br {
+        display: none;
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .popup-content {
+        padding: 20px;
+    }
+
+    .form-section label {
+        font-size: 3vw;
+    }
+
+    .form-section input,
+    .form-section textarea {
+        font-size: 3vw;
+    }
+
+    .form-grid {
+        overflow: auto;
+        height: 100%;
+        gap: 10px;
+    }
+
+    .submit-btn .pre_img {
+        width: 9vw;
+        height: 9vw;
+    }
+
+    .submit-btn .sec_text {
+        font-size: 4vw;
+        height: 5vw;
+    }
+
+    .submit-btn {
+        border-radius: 9vw;
+    }
+
+    .close-btn {
+        font-size: 6vw;
+    }
+
+    .tag i {
+        font-size: 3vw;
+    }
+
+    button.svg_btn svg {
+        max-width: 12vw;
+        max-height: 12vw;
+    }
+
+    button.svg_btn {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    .drag-btn {
+        font-size: 8vw;
+    }
+
+    .cards-pin-section {
+        height: 400vh;
+    }
+
+    .contact-panel h2 {
+        font-size: 10vw;
+    }
+
+    .drag-container canvas {
+        width: 100%;
+        height: 54vh;
+    }
+
+    .drag-container {
+        height: 54vh;
+    }
+
+    footer.contact-footer a {
+        height: 5vw;
+    }
+
+    footer a,
+    footer span {
+        font-size: 4vw;
+    }
+
+    footer {
+        width: 70%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 30px;
+    }
+
+    .images_overlay:has(a:hover) .video_overlay {
+        display: none;
+    }
+
+    .contact-panel {
+        padding: 60px 20px 30px;
+    }
+
+    .inner_card {
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .inner_card .secondary p {
+        font-size: 5vw;
+    }
+
+    .inner_card .secondary ul li {
+        font-size: 4vw;
+    }
+
+    .inner_card .secondary img {
+        border-radius: 10px;
+    }
+
 }
