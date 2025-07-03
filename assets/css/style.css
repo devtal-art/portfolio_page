@@ -905,11 +905,11 @@ img {
     /* display: none; */
     position: relative;
     z-index: 1;
-    width: 100%;
+    width: 100%;   
 }
 
 .drag-btn {
-    position: absolute;
+    position: absolute; 
     padding: 12px 40px;
     border-radius: 1999px;
     border: none;

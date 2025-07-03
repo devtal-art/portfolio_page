@@ -83,7 +83,7 @@ window.addEventListener("load", () => {
   window.openPopup = function () {
     smoother.paused(true); // Pause smooth scroll
     document.body.classList.add("popup-open");
-    document.querySelector(".popup").classList.add("active");
+    document.querySelector(".popup").classList.add("active"); 
   };
 
   window.closePopup = function () {
