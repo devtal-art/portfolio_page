@@ -197,13 +197,9 @@
 
 
 
-                <section class="about-section fade-in-up">
+                <section class="about-section fade-in-up about-typewriter">
                     <small>(About Gurpreet)</small>
-                    <h2 id="aboutText">
-                        I'm a passionate marketing enthusiast driven bycreativity and curiosity. While I'm early in my
-                        professionaljourney, my love for marketing runs deep—from digitaladvertising to content
-                        creation. I thrive on spottingtrends and bringing fresh perspectives to every project.
-                    </h2>
+                    <h2 id="typewriterText"></h2>
                 </section>
 
                 <!-- Fading Image + Text Slider Section -->
@@ -218,19 +214,18 @@
                         <!-- Right: Text Area -->
                         <div class="slider-text">
                             <div class="top_text">
-                                <p class="active">
+                                <p class="active" data-count="05">
                                     Spotify playlists I've created. But I mainly listen<br />
                                     to the blend my boyfriend and I have.
                                 </p>
-                                <p>
+                                <p data-count="17">
                                     Mostly quiet music when I work. I don’t like<br />
                                     lyrics when I’m designing.
                                 </p>
                             </div>
 
                             <div class="bottom_counter">
-                                <span class="active">01</span>
-                                <span>02</span>
+                                <span id="slideCounter">05</span>
                             </div>
                         </div>
                     </div>
@@ -384,17 +379,66 @@
                         </button>
                         <button class="open-btn drag-btn svg_btn" onclick="openPopup()" aria-label="Contact us"
                             style="background:#4A90E2">
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M467 76H45C20.238 76 0 96.149 0 121v270c0 24.86 20.251 45 45 45h422c24.762 0 45-20.149 45-45V121c0-24.857-20.248-45-45-45zm-6.91 30L267.624 299.094c-5.864 5.882-17.381 5.886-23.248 0L51.91 106h408.18zM30 385.485v-258.97L159.065 256 30 385.485zM51.91 406l128.334-128.752 42.885 43.025c17.574 17.631 48.175 17.624 65.743 0l42.885-43.024L460.09 406H51.91zM482 385.485 352.935 256 482 126.515v258.97z" fill="#000000" opacity="1" data-original="#000000"></path></g></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0"
+                                viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve"
+                                class="">
+                                <g>
+                                    <path
+                                        d="M467 76H45C20.238 76 0 96.149 0 121v270c0 24.86 20.251 45 45 45h422c24.762 0 45-20.149 45-45V121c0-24.857-20.248-45-45-45zm-6.91 30L267.624 299.094c-5.864 5.882-17.381 5.886-23.248 0L51.91 106h408.18zM30 385.485v-258.97L159.065 256 30 385.485zM51.91 406l128.334-128.752 42.885 43.025c17.574 17.631 48.175 17.624 65.743 0l42.885-43.024L460.09 406H51.91zM482 385.485 352.935 256 482 126.515v258.97z"
+                                        fill="#000000" opacity="1" data-original="#000000"></path>
+                                </g>
+                            </svg>
                         </button>
                     </div>
 
                     <!-- Footer Info -->
                     <footer class="contact-footer">
                         <span>©2025</span>
-                        <a href="#"><span class="pre">Instagram</span><span class="pre">Instagram</span></a>
-                        <a href="#"><span class="pre">YouTube</span><span class="pre">YouTube</span></a>
-                        <a href="#"><span class="pre">Unsplash</span><span class="pre">Unsplash</span></a>
-                        <a href="#"><span class="pre">TikTok</span><span class="pre">TikTok</span></a>
+                        <div class="images_overlay">
+                            <div class="video_overlay">
+                                <video autoplay muted loop playsinline preload="auto">
+                                    <source src="/assets/images/instagram.webm" type="video/webm" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <a href="#">
+                                <span class="pre">Instagram</span><span class="pre">Instagram</span>
+                            </a>
+                        </div>
+                        <div class="images_overlay">
+                            <div class="video_overlay">
+                                <video autoplay muted loop playsinline preload="auto">
+                                    <source src="/assets/images/instagram.webm" type="video/webm" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <a href="#">
+                                <span class="pre">YouTube</span><span class="pre">YouTube</span>
+                            </a>
+                        </div>
+                        <div class="images_overlay">
+                            <div class="video_overlay">
+                                <video autoplay muted loop playsinline preload="auto">
+                                    <source src="/assets/images/instagram.webm" type="video/webm" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <a href="#">
+                                <span class="pre">Unsplash</span><span class="pre">Unsplash</span>
+                            </a>
+                        </div>
+                        <div class="images_overlay">
+                            <div class="video_overlay">
+                                <video autoplay muted loop playsinline preload="auto">
+                                    <source src="/assets/images/instagram.webm" type="video/webm" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <a href="#">
+                                <span class="pre">TikTok</span><span class="pre">TikTok</span>
+                            </a>
+                        </div>
                     </footer>
                 </div>
 

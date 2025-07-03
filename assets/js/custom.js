@@ -175,17 +175,17 @@ ScrollTrigger.create({
 });
 
 cards.forEach((card, index) => {
-  const offsetY = Math.min(10 + index * 20, 80); // Cap max Y offset at 80px
+  const offsetY = Math.min(20 + index * 40, 120); // vertical offset between stacked cards
 
   gsap.fromTo(
     card,
     {
-      y: "100vh",
-      scale: 0.8,
+      y: "100vh", // start from below screen
+      scale: 0.9,
       zIndex: 10 + index,
     },
     {
-      y: `${offsetY}px`, // Stacking at top with increasing offset
+      y: `${offsetY}px`,
       scale: 1,
       ease: "power2.out",
       scrollTrigger: {
@@ -197,6 +197,7 @@ cards.forEach((card, index) => {
     }
   );
 });
+
 
 
 
@@ -394,4 +395,85 @@ buttons.forEach((btn) => {
       btn.style.transform = btn.style.transform.replace(" scale(1.1)", "");
     }, 200);
   });
+});
+
+
+// Sliding but static Cards
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll(".slider-image img");
+  const texts = document.querySelectorAll(".slider-text .top_text p");
+  const counterEl = document.getElementById("slideCounter");
+
+  let currentIndex = 0;
+
+  // GSAP animate counter
+  function animateCounter(toValue) {
+    const currentVal = parseInt(counterEl.textContent, 10) || 0;
+    const targetVal = parseInt(toValue, 10);
+
+    gsap.fromTo(counterEl,
+      { innerText: currentVal },
+      {
+        innerText: targetVal,
+        duration: 1.2,
+        ease: "power2.out",
+        snap: { innerText: 1 },
+        onUpdate: () => {
+          counterEl.textContent = Math.floor(counterEl.innerText).toString().padStart(2, '0');
+        }
+      }
+    );
+  }
+
+  // Show the current slide and animate number
+  function showSlide(index) {
+    images.forEach((img, i) => img.classList.toggle("active", i === index));
+    texts.forEach((txt, i) => txt.classList.toggle("active", i === index));
+
+    const currentText = texts[index];
+    const count = currentText.dataset.count || (index + 1);
+    animateCounter(count);
+
+    currentIndex = index;
+  }
+
+  // First slide
+  showSlide(currentIndex);
+
+  // Auto-slide every 5 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % texts.length;
+    showSlide(currentIndex);
+  }, 5000);
+});
+
+// Typewritter Effect
+
+gsap.registerPlugin(ScrollTrigger);
+
+const textEl = document.getElementById("typewriterText");
+const fullText = "I'm a passionate marketing enthusiast driven by creativity and curiosity. While I'm early in my professional journey, my love for marketing runs deep—from digital advertising to content creation. I thrive on spotting trends and bringing fresh perspectives to every project.";
+
+let index = 0;
+let started = false;
+
+function typeWriter() {
+  if (index < fullText.length) {
+    textEl.innerHTML += fullText.charAt(index);
+    index++;
+    setTimeout(typeWriter, 25);
+  }
+}
+
+ScrollTrigger.create({
+  trigger: ".about-typewriter",
+  start: "top 80%",
+  once: true,
+  onEnter: () => {
+    if (!started) {
+      started = true;
+      typeWriter();
+    }
+  }
 });

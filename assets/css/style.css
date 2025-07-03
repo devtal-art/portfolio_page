@@ -7,12 +7,6 @@
     font-family: "Roboto", sans-serif;
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
 @keyframes expandFont {
     to {
         font-size: 11vw;
@@ -55,6 +49,16 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
 
@@ -383,12 +387,13 @@ body {
     top: 0;
     left: 0;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease;
 }
 
 .slider-image img.active {
     opacity: 1;
     position: relative;
+    animation: fadeIn 2s ease forwards;
     z-index: 2;
 }
 
@@ -397,16 +402,16 @@ body {
     font-weight: 500;
     color: #c43670;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
     position: absolute;
-    /* padding: 20px; */
     line-height: 1.5;
+    transition: opacity 0.5s ease;
 }
 
 .slider-text p.active {
     opacity: 1;
     position: relative;
     z-index: 2;
+    animation: fadeIn 2s ease forwards;
 }
 
 .slider-text .bottom_counter span {
@@ -415,13 +420,30 @@ body {
     line-height: 10vw;
     color: #c53965;
     position: absolute;
-    opacity: 0;
     bottom: 40px;
 }
 
-.slider-text .bottom_counter span.active {
+#slideCounter {
+    font-size: 12vw;
+    font-weight: 800;
+    line-height: 10vw;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    font-variant-numeric: tabular-nums;
+    /* for aligned digits */
+}
+
+.fade-slider img,
+.fade-slider .top_text p {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.fade-slider img.active,
+.fade-slider .top_text p.active {
     opacity: 1;
 }
+
 
 /* Popup Design */
 
@@ -733,6 +755,9 @@ body {
     font-size: 3rem;
     transform-origin: center;
     overflow: hidden;
+    top: -18%;
+    left: 0%;
+    /* transform: translateY(-50%); */
 }
 
 .cards-pin-section .card:nth-child(2) {
@@ -756,7 +781,7 @@ img {
     display: flex;
     flex-direction: column;
     gap: 80px;
-    padding: 70px;
+    padding: 50px;
 }
 
 .inner_card .prim {
@@ -806,12 +831,13 @@ img {
 
 .inner_card .prim h2 {
     color: #000;
-    font-size: 8vw;
+    font-size: 6vw;
 }
 
 .inner_card .prim p {
-    font-size: 7vw;
+    font-size: 6vw;
     color: #000;
+    font-weight: 600;
 }
 
 
@@ -922,6 +948,7 @@ footer.contact-footer a {
     height: 2vw;
     overflow: hidden;
     justify-content: start;
+    position: relative;
 }
 
 footer.contact-footer a span.pre {
@@ -944,6 +971,45 @@ footer.contact-footer a:hover span.pre:last-child {
     transform: translateY(-100%);
 }
 
+footer .images_overlay {
+    text-align: center;
+    position: relative;
+}
+
+footer .images_overlay .video_overlay {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50px;
+    background: #f0ccdf40;
+    backdrop-filter: blur(12px);
+    padding: 5px;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+footer .images_overlay:hover .video_overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+footer .images_overlay:last-child .video_overlay {
+    left: -50px;
+}
+
+footer .images_overlay .video_overlay video {
+    opacity: 1;
+    z-index: 1;
+    visibility: visible;
+    width: 300px;
+    height: 190px;
+    position: relative;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
 button.svg_btn {
     padding: 20px;
     width: 9vw;
@@ -961,6 +1027,23 @@ button.svg_btn svg {
 
 button.svg_btn svg * {
     fill: #ffffff;
+}
+
+.about-typewriter h2::after {
+  content: '|';
+  animation: blink 0.7s infinite;
+  display: inline-block;
+  margin-left: 2px;
+  color: #fff;
+}
+
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
 }
 
 
