@@ -62,6 +62,20 @@
     }
 }
 
+@keyframes blink {
+
+    0%,
+    50%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 0px;
@@ -427,7 +441,7 @@ body {
     font-size: 12vw;
     font-weight: 800;
     line-height: 10vw;
-    font-weight: 900;
+    font-weight: bold;
     transition: transform 0.3s ease;
     font-variant-numeric: tabular-nums;
     /* for aligned digits */
@@ -725,23 +739,18 @@ body {
 }
 
 .cards-pin-section {
-    height: 300vh;
+    height: 340vh;
     /* large enough scroll space */
     position: relative;
-    padding: 10px;
 }
 
 .cards-stack {
     position: relative;
-    width: 98% !important;
+    width: 96% !important;
     max-width: 100% !important;
     margin: 0 auto;
     height: 100vh;
     margin: auto !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .cards-pin-section .card {
@@ -760,9 +769,8 @@ body {
     font-size: 3rem;
     transform-origin: center;
     overflow: hidden;
-    top: 0%;
+    top: -18%;
     left: 0%;
-    padding: 2rem;
     /* transform: translateY(-50%); */
 }
 
@@ -883,7 +891,7 @@ img {
 .drag-container {
     position: relative;
     width: 100%;
-    height: 60vh;
+    height: 68vh;
     margin-top: 2rem;
     overflow: hidden;
 }
@@ -893,8 +901,6 @@ img {
     /* display: none; */
     position: relative;
     z-index: 1;
-    height: 60vh;
-    width: 100%;
 }
 
 .drag-btn {
@@ -982,6 +988,7 @@ footer.contact-footer a:hover span.pre:last-child {
 footer .images_overlay {
     text-align: center;
     position: relative;
+    z-index: 9999;
 }
 
 footer .images_overlay .video_overlay {
@@ -995,12 +1002,13 @@ footer .images_overlay .video_overlay {
     border-radius: 10px;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s ease;
+    height: 0;
 }
 
-footer .images_overlay:hover .video_overlay {
+.images_overlay:has(a:hover) .video_overlay {
     opacity: 1;
     visibility: visible;
+    height: auto;
 }
 
 footer .images_overlay:last-child .video_overlay {
@@ -1044,27 +1052,6 @@ button.svg_btn svg * {
     margin-left: 2px;
     color: #fff;
 }
-
-@keyframes blink {
-
-    0%,
-    50%,
-    100% {
-        opacity: 1;
-    }
-
-    25%,
-    75% {
-        opacity: 0;
-    }
-}
-
-
-@media screen and (max-width: 1500px) {
-
-
-}
-
 
 @media screen and (max-width: 1200px) {
     .form-section label.tag {

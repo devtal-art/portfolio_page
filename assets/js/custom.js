@@ -197,8 +197,6 @@ cards.forEach((card, index) => {
 });
 
 
-
-
 // Footer Cards
 const dragArea = document.querySelector(".drag-container");
 const buttons = document.querySelectorAll(".drag-btn");
@@ -273,23 +271,25 @@ buttons.forEach((btn, i) => {
 const contactButton = document.querySelector('.contact-button');
 const hideSection = document.querySelector('.contact-panel'); // or use another selector if needed
 
-ScrollTrigger.create({
-  trigger: hideSection,
-  start: "top center",
-  end: "bottom center",
-  onEnter: () => {
-    gsap.to(contactButton, { autoAlpha: 0, duration: 0.5, ease: "power1.out" });
-  },
-  onLeaveBack: () => {
-    gsap.to(contactButton, { autoAlpha: 1, duration: 0.5, ease: "power1.out" });
-  },
-});
+if (contactButton && hideSection) {
+  ScrollTrigger.create({
+    trigger: hideSection,
+    start: "top center",
+    end: "bottom center",
+    onEnter: () => {
+      gsap.to(contactButton, { autoAlpha: 0, duration: 0.5, ease: "power1.out" });
+    },
+    onLeaveBack: () => {
+      gsap.to(contactButton, { autoAlpha: 1, duration: 0.5, ease: "power1.out" });
+    },
+  });
+}
 
 
-// ✅ Real-Time Clock
+// ✅ Real-Time Clock in 12-Hour Format
 function updateClock() {
   const now = new Date();
-  const timeString = now.toLocaleTimeString([], { hour12: false });
+  const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
   document.getElementById('clock').textContent = timeString;
 }
 setInterval(updateClock, 1000);
@@ -310,6 +310,9 @@ function updateLocation() {
 updateLocation();
 
 
+
+
+// ✅ Draggable Footer Buttons with Physics
 
 window.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".drag-container");
@@ -382,6 +385,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 buttons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
+    console.log(`Button clicked: ${btn.textContent}`);
     e.preventDefault();
 
     // Example action: open popup or scroll
@@ -394,6 +398,7 @@ buttons.forEach((btn) => {
     }, 200);
   });
 });
+
 
 
 // Sliding but static Cards
