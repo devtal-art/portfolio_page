@@ -165,37 +165,35 @@ document.addEventListener("DOMContentLoaded", () => {
 gsap.registerPlugin(ScrollTrigger);
 
 const cards = document.querySelectorAll(".card");
+const scrollPerCard = 500; // in vh, controls how much scroll is needed per card
 
+// Total scroll length = number of cards * scrollPerCard
 ScrollTrigger.create({
   trigger: ".cards-pin-section",
   start: "top top",
-  end: `+=${cards.length * 100}%`,
+  end: () => `+=${cards.length * scrollPerCard}vh`,
   pin: ".cards-stack",
   scrub: true,
 });
 
 cards.forEach((card, index) => {
-  const offsetY = Math.min(20 + index * 40, 120); // vertical offset between stacked cards
-
-  gsap.fromTo(
-    card,
-    {
-      y: "100vh", // start from below screen
-      scale: 0.9,
-      zIndex: 10 + index,
-    },
-    {
-      y: `${offsetY}px`,
-      scale: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".cards-pin-section",
-        start: `${(index * 100) / cards.length}% top`,
-        end: `${((index + 1) * 100) / cards.length}% top`,
-        scrub: true,
-      },
+  gsap.fromTo(card, {
+    y: 100,
+    opacity: 0,
+    scale: 0.9,
+    zIndex: index + 1
+  }, {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".cards-pin-section",
+      start: () => `${index * scrollPerCard}vh top`,
+      end: () => `${(index + 1) * scrollPerCard}vh top`,
+      scrub: true
     }
-  );
+  });
 });
 
 
