@@ -1,13 +1,23 @@
-// Scroll to top on load
+// Scroll to top on load (once)
 window.scrollTo({ top: 0, behavior: "smooth" });
 
-// Lock scroll during intro animation
+// Lock scroll initially
 document.body.style.overflow = "hidden";
+
+// Unlock scroll and trigger animations after intro
 window.addEventListener("load", () => {
+  // Unlock scroll after GSAP heading animation
   setTimeout(() => {
     document.body.style.overflow = "auto";
     window.scrollTo(0, 0);
-  }, 3500); // Match intro animation duration
+
+    const heading = document.querySelector(".main-heading");
+    heading.classList.add("static");
+
+    // Show contact button
+    const button = document.querySelector(".contact-button");
+    if (button) button.classList.add("show");
+  }, 3500); // Adjust based on animation duration
 });
 
 // Gallery slider (auto-scroll)
@@ -35,13 +45,34 @@ function autoScroll() {
   requestAnimationFrame(autoScroll);
 }
 
-container.addEventListener("mouseenter", () => paused = true);
-container.addEventListener("mouseleave", () => paused = false);
-
+// Init slider
 duplicateTrackContent();
 autoScroll();
 
-// Popup logic
+// Pause slider on hover
+container.addEventListener("mouseenter", () => paused = true);
+container.addEventListener("mouseleave", () => paused = false);
+
+// Image popup logic
+function openImagePopup(src, title, caption) {
+  const popup = document.getElementById("imagePopup");
+  document.getElementById("popupImage").src = src;
+  document.getElementById("popupTitle").textContent = title;
+  document.getElementById("popupCaption").textContent = caption;
+  popup.classList.add("active");
+}
+
+document.querySelectorAll('#galleryTrack img').forEach((img, index) => {
+  img.addEventListener('click', () => {
+    const src = img.src;
+    const title = img.dataset.title || `Image ${index + 1}`;
+    const caption = img.dataset.caption || "No description available.";
+    openImagePopup(src, title, caption);
+  });
+});
+
+
+// Contact popup logic
 function openPopup() {
   document.getElementById("popupForm").classList.add("show");
 }
@@ -49,23 +80,7 @@ function closePopup() {
   document.getElementById("popupForm").classList.remove("show");
 }
 
-// Show contact button after intro animation
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const button = document.querySelector(".contact-button");
-    if (button) button.classList.add("show");
-  }, 3600);
-});
 
-
-// After GSAP animation ends, unlock scroll
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const heading = document.querySelector(".main-heading");
-    heading.classList.add("static");
-
-    // Unlock scroll after animation
-    document.body.style.overflowY = "scroll";
-    window.scrollTo(0, 0); // force scroll to top again just in case
-  }, 3500); // Match your GSAP timing
-});
+function closeImagePopup() {
+  document.getElementById("imagePopup").classList.remove("active");
+}

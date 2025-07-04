@@ -2,139 +2,168 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The ArtLogic</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The ArtLogic</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 </head>
 
 <body>
 
-  <div class="contact-button">
-    <a href="#" class="open-btn" onclick="openPopup()" aria-label="Contact us">
-      <div class="pre_img">
-        <img src="assets/images/contact_img.jpg" alt="Profile" />
-        <span class="hover_svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-            class="tabler-icon tabler-icon-mail text-[#C43670]">
-            <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
-            <path d="M3 7l9 6l9 -6"></path>
-          </svg>
-        </span>
-      </div>
-      <div class="sec_text">
-        <span class="pre">Contact</span>
-        <span class="pre">Contact</span>
-      </div>
-    </a>
-  </div>
-
-  <!-- Popup -->
-  <div class="popup" id="popupForm">
-    <div class="popup-content">
-      <div class="popup-header">
-        <h1>Get in <span>touch</span></h1>
-        <button class="close-btn" onclick="closePopup()">×</button>
-      </div>
-
-      <div class="form-grid">
-        <div class="form-section">
-          <label>Full name</label>
-          <input type="text" placeholder="Tell me your Full name" />
-        </div>
-        <div class="form-section">
-          <label>Email</label>
-          <input type="email" placeholder="Tell me your Email" />
-        </div>
-        <div class="form-section">
-          <label>Company</label>
-          <input type="text" placeholder="Tell me your Company name" />
-        </div>
-        <div class="form-section">
-          <label>Project details</label>
-          <textarea placeholder="Tell me your goals"></textarea>
-        </div>
-
-        <div class="form-section">
-          <label>What can I do for you?</label>
-          <div class="tags">
-            <label class="tag"><input type="radio" name="service" value="UGC" checked /><i>UGC</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="service" value="Brand Photography" /><i>Brand Photography</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="service" value="Short-Form Video" /><i>Short-Form Video</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="service" value="Content Strategy" /><i>Content Strategy</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="service" value="Identity" /><i>Identity</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="service" value="Account Management" /><i>Account Management</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="service" value="Other" /><i>Other</i><span class="check-bg"></span></label>
-          </div>
-        </div>
-
-        <div class="form-section">
-          <label>Do you have a budget range?</label>
-          <div class="budget">
-            <label class="tag"><input type="radio" name="budget" value="Under $500" checked /><i>Under $500</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="budget" value="$500–$1k" /><i>$500–$1k</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="budget" value="$1k–$2.5k" /><i>$1k–$2.5k</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="budget" value="$2.5k–$5k" /><i>$2.5k–$5k</i><span class="check-bg"></span></label>
-            <label class="tag"><input type="radio" name="budget" value="$5k+" /><i>$5k+</i><span class="check-bg"></span></label>
-          </div>
-        </div>
-      </div>
-
-      <button class="submit-btn">
-        <div class="pre_img">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-              class="tabler-icon tabler-icon-send-2 text-[#C43670]">
-              <path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
-              <path d="M6.5 12h14.5" />
-            </svg>
-          </span>
-          <span class="hover_svg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-              class="tabler-icon tabler-icon-send-2 text-[#C43670]">
-              <path d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
-              <path d="M6.5 12h14.5" />
-            </svg>
-          </span>
-        </div>
-        <div class="sec_text">
-          <span class="pre">Submit</span>
-          <span class="pre">Submit</span>
-        </div>
-      </button>
+    <div class="contact-button">
+        <a href="#" class="open-btn" onclick="openPopup()" aria-label="Contact us">
+            <div class="pre_img">
+                <img src="assets/images/contact_img.jpg" alt="Profile" />
+                <span class="hover_svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="tabler-icon tabler-icon-mail text-[#C43670]">
+                        <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z">
+                        </path>
+                        <path d="M3 7l9 6l9 -6"></path>
+                    </svg>
+                </span>
+            </div>
+            <div class="sec_text">
+                <span class="pre">Contact</span>
+                <span class="pre">Contact</span>
+            </div>
+        </a>
     </div>
-  </div>
 
-  <!-- Page Content -->
-  <h1 class="main-heading">Gurpreet Saigal</h1>
-  <div class="main-content">
-    <div class="top_section">
-      <div class="sub-header">
-        <div>Content Creation & Digital Storytelling</div>
-        <div>Scaling brands reach and impact</div>
-      </div>
-      <div class="gallery-container" id="galleryContainer">
-        <div class="slider-track" id="galleryTrack">
-          <img src="assets/images/01.jpg" alt="Image 1" />
-          <img src="assets/images/02.jpg" alt="Image 2" />
-          <img src="assets/images/01.jpg" alt="Image 3" />
-          <img src="assets/images/02.jpg" alt="Image 4" />
-          <img src="assets/images/01.jpg" alt="Image 5" />
-          <img src="assets/images/02.jpg" alt="Image 6" />
-          <img src="assets/images/01.jpg" alt="Image 7" />
-          <img src="assets/images/02.jpg" alt="Image 8" />
-          <img src="assets/images/01.jpg" alt="Image 9" />
-          <img src="assets/images/02.jpg" alt="Image 10" />
+    <!-- Popup -->
+    <div class="popup" id="popupForm">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h1>Get in <span>touch</span></h1>
+                <button class="close-btn" onclick="closePopup()">×</button>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-section">
+                    <label>Full name</label>
+                    <input type="text" placeholder="Tell me your Full name" />
+                </div>
+                <div class="form-section">
+                    <label>Email</label>
+                    <input type="email" placeholder="Tell me your Email" />
+                </div>
+                <div class="form-section">
+                    <label>Company</label>
+                    <input type="text" placeholder="Tell me your Company name" />
+                </div>
+                <div class="form-section">
+                    <label>Project details</label>
+                    <textarea placeholder="Tell me your goals"></textarea>
+                </div>
+
+                <div class="form-section">
+                    <label>What can I do for you?</label>
+                    <div class="tags">
+                        <label class="tag"><input type="radio" name="service" value="UGC" checked /><i>UGC</i><span
+                                class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="service" value="Brand Photography" /><i>Brand
+                                Photography</i><span class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="service" value="Short-Form Video" /><i>Short-Form
+                                Video</i><span class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="service" value="Content Strategy" /><i>Content
+                                Strategy</i><span class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="service" value="Identity" /><i>Identity</i><span
+                                class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="service" value="Account Management" /><i>Account
+                                Management</i><span class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="service" value="Other" /><i>Other</i><span
+                                class="check-bg"></span></label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <label>Do you have a budget range?</label>
+                    <div class="budget">
+                        <label class="tag"><input type="radio" name="budget" value="Under $500" checked /><i>Under
+                                $500</i><span class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="budget" value="$500–$1k" /><i>$500–$1k</i><span
+                                class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="budget" value="$1k–$2.5k" /><i>$1k–$2.5k</i><span
+                                class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="budget" value="$2.5k–$5k" /><i>$2.5k–$5k</i><span
+                                class="check-bg"></span></label>
+                        <label class="tag"><input type="radio" name="budget" value="$5k+" /><i>$5k+</i><span
+                                class="check-bg"></span></label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="submit-btn">
+                <div class="pre_img">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="tabler-icon tabler-icon-send-2 text-[#C43670]">
+                            <path
+                                d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
+                            <path d="M6.5 12h14.5" />
+                        </svg>
+                    </span>
+                    <span class="hover_svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="tabler-icon tabler-icon-send-2 text-[#C43670]">
+                            <path
+                                d="M4.698 4.034l16.302 7.966l-16.302 7.966a.503 .503 0 0 1 -.546 -.124a.555 .555 0 0 1 -.12 -.568l2.468 -7.274l-2.468 -7.274a.555 .555 0 0 1 .12 -.568a.503 .503 0 0 1 .546 -.124z" />
+                            <path d="M6.5 12h14.5" />
+                        </svg>
+                    </span>
+                </div>
+                <div class="sec_text">
+                    <span class="pre">Submit</span>
+                    <span class="pre">Submit</span>
+                </div>
+            </button>
         </div>
-      </div>
     </div>
-  </div>
 
-  <script src="assets/js/custom.js"></script>
+    <!-- Page Content -->
+    <h1 class="main-heading">Gurpreet Saigal</h1>
+    <div class="main-content">
+        <div class="top_section">
+            <div class="sub-header">
+                <div>Content Creation & Digital Storytelling</div>
+                <div>Scaling brands reach and impact</div>
+            </div>
+            <div class="gallery-container" id="galleryContainer">
+                <div class="slider-track" id="galleryTrack">
+                    <img src="assets/images/01.jpg" alt="Image 1" data-title="Summer Collection"
+                        data-caption="Explore our fresh summer arrivals." />
+                    <img src="assets/images/02.jpg" alt="Image 2" data-title="Summer Collection"
+                        data-caption="Explore our fresh summer arrivals." />
+                    <img src="assets/images/01.jpg" alt="Image 3" data-title="Summer Collection"
+                        data-caption="Explore our fresh summer arrivals." />
+                    <img src="assets/images/02.jpg" alt="Image 4" data-title="Summer Collection"
+                        data-caption="Explore our fresh summer arrivals." />
+                    <img src="assets/images/01.jpg" alt="Image 5" data-title="Summer Collection"
+                        data-caption="Explore our fresh summer arrivals." />
+                    <img src="assets/images/02.jpg" alt="Image 6" data-title="Summer Collection"
+                        data-caption="Explore our fresh summer arrivals." />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Image Detail Popup -->
+    <div class="image-popup" id="imagePopup">
+        <div class="popup-overlay" onclick="closeImagePopup()"></div>
+        <div class="popup-box">
+            <button class="popup-close" onclick="closeImagePopup()">×</button>
+            <div class="primary"><img id="popupImage" src="" alt="Popup Image" /></div>
+            <div class="secondary">
+                <h2 id="popupTitle"></h2>
+                <div id="popupCaption" class="popup-caption"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/custom.js"></script>
 </body>
 
 </html>
