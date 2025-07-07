@@ -227,7 +227,7 @@ body {
 }
 
 .slider-track img {
-    width: 24vw;
+    width: 20vw;
     height: 50vh;
     object-fit: cover;
     border-radius: 12px;
@@ -725,18 +725,19 @@ body.popup-open #smooth-wrapper {
 }
 
 #popupImage {
-  animation: fadeInImage 0.5s ease-in;
+    animation: fadeInImage 0.5s ease-in;
 }
 
 @keyframes fadeInImage {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 
@@ -811,14 +812,19 @@ body.popup-open #smooth-wrapper {
     }
 
     .sub-header {
-        font-size: 5vw;
+        font-size: 3vw;
+        margin-top: 20px;
     }
 
     .top_section {
         display: flex;
         flex-direction: column;
-        margin-bottom: 40vw;
-        padding: 70px 0;
+        padding: 10px 0 70px 0;
+    }
+
+    .slider-track img {
+        height: 40vh;
+        width: 35vw;
     }
 
     .top_section .sub-header {
@@ -827,7 +833,10 @@ body.popup-open #smooth-wrapper {
 
     .top_section .gallery-container {
         orphans: 1;
-        margin-bottom: 50px;
+    }
+
+    .gallery-container {
+        padding: 20px 0;
     }
 
     .contact-button img {
@@ -869,6 +878,7 @@ body.popup-open #smooth-wrapper {
         overflow: auto;
         height: 100%;
         gap: 10px;
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .submit-btn .pre_img {
@@ -891,6 +901,31 @@ body.popup-open #smooth-wrapper {
 
     .tag i {
         font-size: 3vw;
+    }
+
+    .image-popup .popup-box {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .image-popup .popup-box .secondary {
+        padding: 10px;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .slider-track img {
+        height: 45vh;
+        width: 55vw;
+    }
+
+    .sub-header {
+        font-size: 4vw;
+    }
+
+    .submit-btn .pre_img span svg {
+        max-width: 18px;
     }
 
 }
