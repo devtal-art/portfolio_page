@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Word Skeleton Loader</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .animation_section {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        div#textContainer {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 60vh;
+            overflow-y: auto;
+        }
+
+        .text-line {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 1em;
+        }
+
+        .word-skeleton {
+            display: inline-block;
+            height: 1.5em;
+            margin: 0 4px 8px 0;
+            border-radius: 40px;
+            background: linear-gradient(90deg, #e0e0e0 25%, #cccccc 50%, #e0e0e0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3.5s infinite;
+            color: transparent;
+            border: 1px solid #d0d0d0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            transition: background 0.3s, color 0.3s;
+            font-size: 20px;
+        }
+
+        .word-real {
+            display: inline-block;
+            height: 1em;
+            margin: 0 4px 8px 0;
+            border-radius: 4px;
+            background: transparent;
+            color: #222;
+            transition: background 0.3s, color 0.3s;
+            font-size: 20px;
+            border: none;
+            box-shadow: none;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="animation_section">
+        <div class="wrapper">
+            <div id="textContainer" class="container">
+                <div id="progressiveSkeleton" class="text-line"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        const contentText = `
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula feugiat nisi, eget feugiat sapien eleifend eget.
+    Curabitur vitae diam nec nulla placerat consectetur. Vivamus euismod est sit amet magna suscipit, nec vulputate nunc porta.
+    Aliquam erat volutpat. Vestibulum sollicitudin, libero vitae porta sodales, turpis justo finibus elit, in rhoncus est erat id erat.
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula feugiat nisi, eget feugiat sapien eleifend eget.
+    Curabitur vitae diam nec nulla placerat consectetur. Vivamus euismod est sit amet magna suscipit, nec vulputate nunc porta.
+    Aliquam erat volutpat. Vestibulum sollicitudin, libero vitae porta sodales, turpis justo finibus elit, in rhoncus est erat id erat.
+    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+  `;
+
+        const words = contentText.trim().split(/\s+/);
+        const skeletonContainer = document.getElementById('progressiveSkeleton');
+        const textContainer = document.getElementById('textContainer');
+
+        // Create spans for each word
+        words.forEach((word, i) => {
+            const span = document.createElement('span');
+            span.className = 'word-skeleton';
+            span.style.width = (word.length * 0.6 + 1) + 'em'; // Match text width
+            span.textContent = word;
+            skeletonContainer.appendChild(span);
+        });
+
+        function revealWordsOnScroll() {
+            const scrollTop = textContainer.scrollTop;
+            const scrollHeight = textContainer.scrollHeight - textContainer.clientHeight;
+            let percent = 0;
+            if (scrollHeight > 0) {
+                percent = scrollTop / scrollHeight;
+            }
+            percent = Math.min(Math.max(percent, 0), 1);
+            const revealCount = Math.ceil(percent * words.length);
+            console.log('Scroll:', scrollTop, 'Max:', scrollHeight, 'Percent:', percent, 'Reveal:', revealCount);
+            const spans = skeletonContainer.querySelectorAll('span');
+            spans.forEach((span, i) => {
+                if (i < revealCount) {
+                    span.className = 'word-real';
+                } else {
+                    span.className = 'word-skeleton';
+                }
+            });
+        }
+
+        textContainer.addEventListener('scroll', revealWordsOnScroll);
+        // Trigger on window scroll as well
+        window.addEventListener('scroll', revealWordsOnScroll);
+        // Also trigger on mouse wheel for better responsiveness
+        textContainer.addEventListener('wheel', revealWordsOnScroll);
+        // Initialize with all words as skeletons
+        const spans = skeletonContainer.querySelectorAll('span');
+        spans.forEach(span => {
+            span.className = 'word-skeleton';
+        });
+    </script>
+
+</body>
+
+</html>
